@@ -36,13 +36,13 @@ public class Promise<T> {
     }
 
     public func resolve(result: T) {
-        successBlocks.map { $0(result: result) }
-        alwaysBlocks.map { $0() }
+        successBlocks.forEach { $0(result: result) }
+        alwaysBlocks.forEach { $0() }
     }
 
     public func reject(error: NSError?) {
-        failureBlocks.map { $0(error: error) }
-        alwaysBlocks.map { $0() }
+        failureBlocks.forEach { $0(error: error) }
+        alwaysBlocks.forEach { $0() }
     }
 
 }

@@ -28,7 +28,12 @@
 		C24BEF741BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF661BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF751BB37983004AAC33 /* UIViewController+Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF671BB37983004AAC33 /* UIViewController+Transitioning.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF781BB3798C004AAC33 /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF791BB3798C004AAC33 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF771BB3798C004AAC33 /* TextField.swift */; settings = {ASSET_TAGS = (); }; };
+		C24BEF791BB3798C004AAC33 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF771BB3798C004AAC33 /* InsetTextField.swift */; settings = {ASSET_TAGS = (); }; };
+		C26B4F901BB497DE009640D7 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F8F1BB497DE009640D7 /* UIColor+Hex.swift */; settings = {ASSET_TAGS = (); }; };
+		C26B4F921BB49848009640D7 /* UIView+RoundedEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */; settings = {ASSET_TAGS = (); }; };
+		C26B4F941BB4987C009640D7 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F931BB4987C009640D7 /* PushButton.swift */; settings = {ASSET_TAGS = (); }; };
+		C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F951BB498CF009640D7 /* SlideOverTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F961BB498CF009640D7 /* SlideOverTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
 		C28BBF6E1BB3630B00A0443C /* ATKShared.h in Headers */ = {isa = PBXBuildFile; fileRef = C28BBF6D1BB3630B00A0443C /* ATKShared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C28BBF751BB3630B00A0443C /* ATKShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28BBF6A1BB3630B00A0443C /* ATKShared.framework */; settings = {ASSET_TAGS = (); }; };
 		C28BBF7A1BB3630B00A0443C /* ATKSharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF791BB3630B00A0443C /* ATKSharedTests.swift */; };
@@ -80,7 +85,12 @@
 		C24BEF661BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarSlideTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C24BEF671BB37983004AAC33 /* UIViewController+Transitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transitioning.swift"; sourceTree = "<group>"; };
 		C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCircleView.swift; sourceTree = "<group>"; };
-		C24BEF771BB3798C004AAC33 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		C24BEF771BB3798C004AAC33 /* InsetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		C26B4F8F1BB497DE009640D7 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedEdges.swift"; sourceTree = "<group>"; };
+		C26B4F931BB4987C009640D7 /* PushButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushButton.swift; sourceTree = "<group>"; };
+		C26B4F951BB498CF009640D7 /* SlideOverTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitioningDelegate.swift; sourceTree = "<group>"; };
+		C26B4F961BB498CF009640D7 /* SlideOverTransitioningAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOverTransitioningAnimator.swift; sourceTree = "<group>"; };
 		C28BBF6A1BB3630B00A0443C /* ATKShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ATKShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28BBF6D1BB3630B00A0443C /* ATKShared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATKShared.h; sourceTree = "<group>"; };
 		C28BBF6F1BB3630B00A0443C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,8 +171,9 @@
 		C24BEF7A1BB37996004AAC33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C26B4F931BB4987C009640D7 /* PushButton.swift */,
 				C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */,
-				C24BEF771BB3798C004AAC33 /* TextField.swift */,
+				C24BEF771BB3798C004AAC33 /* InsetTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 		C24BEF7C1BB379AB004AAC33 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */,
 				C24BEF541BB37972004AAC33 /* UIScrollView+Bounds.swift */,
 				C24BEF551BB37972004AAC33 /* UIView+Frame.swift */,
 				C24BEF561BB37972004AAC33 /* UIViewController+TopPresented.swift */,
@@ -187,6 +199,7 @@
 				C24BEF811BB379D8004AAC33 /* Pop */,
 				C24BEF821BB379E0004AAC33 /* Slide */,
 				C24BEF831BB379F0004AAC33 /* Tab Bar Slide */,
+				C26B4F991BB498D2009640D7 /* Slide Over */,
 			);
 			name = Transitions;
 			sourceTree = "<group>";
@@ -245,6 +258,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C26B4F991BB498D2009640D7 /* Slide Over */ = {
+			isa = PBXGroup;
+			children = (
+				C26B4F951BB498CF009640D7 /* SlideOverTransitioningDelegate.swift */,
+				C26B4F961BB498CF009640D7 /* SlideOverTransitioningAnimator.swift */,
+			);
+			name = "Slide Over";
+			sourceTree = "<group>";
+		};
 		C28BBF601BB3630B00A0443C = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +296,7 @@
 				C28BBF891BB3639000A0443C /* Q.swift */,
 				C24BEF331BB378FD004AAC33 /* ImageCache.swift */,
 				C24BEF341BB378FD004AAC33 /* JSON.swift */,
+				C26B4F8F1BB497DE009640D7 /* UIColor+Hex.swift */,
 				C28BBF841BB3631F00A0443C /* Supporting Files */,
 			);
 			name = Source;
@@ -487,18 +510,22 @@
 				C24BEF741BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift in Sources */,
 				C24BEF6F1BB37983004AAC33 /* PopTransitioningAnimator.swift in Sources */,
 				C24BEF6A1BB37983004AAC33 /* ClampTransitioningDelegate.swift in Sources */,
+				C26B4F941BB4987C009640D7 /* PushButton.swift in Sources */,
 				C24BEF581BB37972004AAC33 /* UIView+Frame.swift in Sources */,
 				C24BEF731BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift in Sources */,
+				C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */,
 				C24BEF721BB37983004AAC33 /* SlideTransitioningDelegate.swift in Sources */,
 				C24BEF681BB37983004AAC33 /* BaseTransitioningAnimator.swift in Sources */,
+				C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */,
 				C24BEF591BB37972004AAC33 /* UIViewController+TopPresented.swift in Sources */,
-				C24BEF791BB3798C004AAC33 /* TextField.swift in Sources */,
+				C24BEF791BB3798C004AAC33 /* InsetTextField.swift in Sources */,
 				C24BEF571BB37972004AAC33 /* UIScrollView+Bounds.swift in Sources */,
 				C24BEF6B1BB37983004AAC33 /* FadeTransitioningAnimator.swift in Sources */,
 				C24BEF781BB3798C004AAC33 /* LoadingCircleView.swift in Sources */,
 				C24BEF751BB37983004AAC33 /* UIViewController+Transitioning.swift in Sources */,
 				C24BEF6C1BB37983004AAC33 /* FadeTransitioningDelegate.swift in Sources */,
 				C24BEF691BB37983004AAC33 /* ClampTransitioningAnimator.swift in Sources */,
+				C26B4F921BB49848009640D7 /* UIView+RoundedEdges.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26B4F901BB497DE009640D7 /* UIColor+Hex.swift in Sources */,
 				C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */,
 				C28BBF8B1BB3639000A0443C /* PassInError.swift in Sources */,
 				C28BBF8A1BB3639000A0443C /* FilePath.swift in Sources */,
