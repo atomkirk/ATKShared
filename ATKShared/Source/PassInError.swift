@@ -8,15 +8,15 @@
 
 import Foundation
 
-typealias PassInErrorBlock = (error: NSError) -> Void
+public typealias PassInErrorBlock = (error: NSError) -> Void
 
-class PassInError: NSObject {
+public class PassInError: NSObject {
 
-    dynamic var ref: NSError?
+    public dynamic var ref: NSError?
 
-    let block: PassInErrorBlock?
+    public let block: PassInErrorBlock?
 
-    init(block: PassInErrorBlock? = nil) {
+    public init(block: PassInErrorBlock? = nil) {
         self.block = block
         super.init()
         self.addObserver(self, forKeyPath: "ref", options: [], context: nil)
@@ -29,7 +29,7 @@ class PassInError: NSObject {
 
     // MARK: - KVO
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if object is PassInError {
             if keyPath == "ref" {
                 if let error = self.ref {

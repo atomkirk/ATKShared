@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+public class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         if self.direction == .Presenting {
             return 1
         }
@@ -19,7 +19,7 @@ class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnima
         }
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
         case .Presenting:
             let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!

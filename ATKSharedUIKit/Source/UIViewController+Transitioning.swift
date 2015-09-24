@@ -10,9 +10,9 @@ import UIKit
 
 private var transitioningDelegateKey = "transitioningDelegateKey"
 
-extension UIViewController {
+public extension UIViewController {
 
-    var retainedTransitioningDelegate: UIViewControllerTransitioningDelegate? {
+    public var retainedTransitioningDelegate: UIViewControllerTransitioningDelegate? {
         get {
             return objc_getAssociatedObject(self, &transitioningDelegateKey) as? UIViewControllerTransitioningDelegate
         }
@@ -21,7 +21,7 @@ extension UIViewController {
         }
     }
 
-    func customTransitionToController(controller: UIViewController, transitioningDelegate: UIViewControllerTransitioningDelegate) {
+    public func customTransitionToController(controller: UIViewController, transitioningDelegate: UIViewControllerTransitioningDelegate) {
         self.retainedTransitioningDelegate = transitioningDelegate
         controller.transitioningDelegate = transitioningDelegate
         controller.modalPresentationStyle = .Custom

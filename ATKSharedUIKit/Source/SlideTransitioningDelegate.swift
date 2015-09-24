@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SlideTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+public class SlideTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideTransitioningAnimator(direction: .Presenting)
     }
 
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideTransitioningAnimator(direction: .Dismissing)
     }
 }

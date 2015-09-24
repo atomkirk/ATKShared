@@ -17,6 +17,8 @@ public class Promise<T> {
     private(set) var successBlocks = [PromiseSuccessBlock]()
     private(set) var failureBlocks = [PromiseFailureBlock]()
     private(set) var alwaysBlocks  = [PromiseAlwaysBlock]()
+    
+    public init() {}
 
     public func success(block: PromiseSuccessBlock) -> Self {
         successBlocks.append(block)

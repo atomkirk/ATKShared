@@ -10,7 +10,7 @@ import Foundation
 
 public typealias QBlock = () -> Void
 
-func serialQueueWithName(name: String) -> NSOperationQueue {
+private func serialQueueWithName(name: String) -> NSOperationQueue {
     let queue = NSOperationQueue()
     queue.name = "com.spoken.upload-queue"
     queue.maxConcurrentOperationCount = 1

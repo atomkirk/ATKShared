@@ -8,59 +8,40 @@
 
 import Foundation
 
+public class FilePath: NSObject {
 
-enum FilePathDirectory: String {
-    case Downloaded = "Downloaded"
-    case Busy       = "Busy"
-    case Uploading  = "Uploading"
-}
+    public let string: String
 
-
-class FilePath: NSObject {
-
-    let string: String
-
-    var fileURL: NSURL {
+    public var fileURL: NSURL {
         return NSURL(fileURLWithPath: self.string)
     }
 
-    init(string: String) {
+    public init(string: String) {
         self.string = string
     }
 
 
     // MARK: - Directories
 
-    class func documentRoot() -> FilePath {
+    public class func documentRoot() -> FilePath {
         let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) 
         let path = urls.last!.relativePath!
         return FilePath(string: path)
     }
 
-    class func pathOfDirectory(directory: FilePathDirectory) -> FilePath {
-        let path = FilePath(string: (self.documentRoot().string as NSString).stringByAppendingPathComponent(directory.rawValue))
-        if !path.exists() {
-            do {
-                try NSFileManager.defaultManager().createDirectoryAtPath(path.string, withIntermediateDirectories: true, attributes: nil)
-            } catch let error as NSError {
-                PassInError().ref = error
-            }
-        }
-        return path
-    }
 
 
     // MARK: - Utils
 
-    func exists() -> Bool {
+    public func exists() -> Bool {
         return NSFileManager.defaultManager().fileExistsAtPath(self.string)
     }
 
-    func contents() -> NSData? {
+    public func contents() -> NSData? {
         return NSFileManager.defaultManager().contentsAtPath(self.string)
     }
 
-    func directoryContents(ext: String?) -> [FilePath] {
+    public func directoryContents(ext: String?) -> [FilePath] {
         let items = (try! NSFileManager.defaultManager().contentsOfDirectoryAtPath(self.string)) 
         var paths = [FilePath]()
         for filename in items {
@@ -72,19 +53,19 @@ class FilePath: NSObject {
         return paths
     }
 
-    func basename() -> String {
+    public func basename() -> String {
         return ((self.string as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
     }
 
-    func pathByAppendingComponent(component: String) -> FilePath {
+    public func pathByAppendingComponent(component: String) -> FilePath {
         return FilePath(string: (self.string as NSString).stringByAppendingPathComponent(component))
     }
 
-    func write(content: NSData) -> Bool {
+    public func write(content: NSData) -> Bool {
         return content.writeToFile(self.string, atomically: true)
     }
 
-    func remove() -> Bool {
+    public func remove() -> Bool {
         if self.exists() {
             let success: Bool
             do {

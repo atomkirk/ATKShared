@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ClampTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+public class ClampTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ClampTransitioningAnimator(direction: .Presenting)
     }
 
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ClampTransitioningAnimator(direction: .Dismissing)
     }
 

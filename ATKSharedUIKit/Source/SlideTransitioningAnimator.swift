@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
         case .Presenting:
             let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!

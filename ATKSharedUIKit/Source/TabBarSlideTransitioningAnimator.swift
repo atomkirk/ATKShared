@@ -8,15 +8,15 @@
 
 import UIKit
 
-class TabBarSlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+public class TabBarSlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
     private let offset = CGFloat(10)
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
         case .Presenting:
             let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!

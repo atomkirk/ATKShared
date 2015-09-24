@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
 
-    func topPresentedViewController() -> UIViewController {
+    public func topPresentedViewController() -> UIViewController {
         if var next = self.presentedViewController {
             while let n = next.presentedViewController {
                 next = n

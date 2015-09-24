@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
 
-    var contentOffsetX: CGFloat {
+    public var contentOffsetX: CGFloat {
         get {
             return self.contentOffset.x
         }
@@ -21,7 +21,7 @@ extension UIScrollView {
         }
     }
 
-    var contentOffsetY: CGFloat {
+    public var contentOffsetY: CGFloat {
         get {
             return self.contentOffset.y
         }
@@ -32,7 +32,7 @@ extension UIScrollView {
         }
     }
 
-    var contentInsetTop: CGFloat {
+    public var contentInsetTop: CGFloat {
         get {
             return self.contentInset.top
         }
@@ -43,7 +43,7 @@ extension UIScrollView {
         }
     }
 
-    var contentInsetBottom: CGFloat {
+    public var contentInsetBottom: CGFloat {
         get {
             return self.contentInset.bottom
         }
@@ -54,7 +54,7 @@ extension UIScrollView {
         }
     }
 
-    var contentInsetLeft: CGFloat {
+    public var contentInsetLeft: CGFloat {
         get {
             return self.contentInset.left
         }
@@ -65,7 +65,7 @@ extension UIScrollView {
         }
     }
 
-    var contentInsetRight: CGFloat {
+    public var contentInsetRight: CGFloat {
         get {
             return self.contentInset.right
         }

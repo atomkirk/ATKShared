@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ClampTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+public class ClampTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
         case .Presenting:
             let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! UINavigationController

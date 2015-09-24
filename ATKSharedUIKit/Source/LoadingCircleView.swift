@@ -9,11 +9,11 @@
 import UIKit
 
 @IBDesignable
-class LoadingCircleView: UIView {
+public class LoadingCircleView: UIView {
 
     private var rotating = true
 
-    override func didMoveToWindow() {
+    public override func didMoveToWindow() {
         if self.window != nil {
             rotating = true
             rotate()
@@ -23,7 +23,7 @@ class LoadingCircleView: UIView {
         }
     }
 
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         UIColor(red: 0.984, green: 0, blue: 0.714, alpha: 1).setStroke()
         CGContextSetLineWidth(context, 1)
