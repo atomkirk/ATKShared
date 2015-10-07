@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias ImageCacheCompletionBlock = (image: UIImage?) -> Void
+public typealias ImageCacheCompletionBlock = (url: NSURL, cached: Bool, image: UIImage?) -> Void
 
 public class ImageCache {
 
@@ -27,7 +27,7 @@ public class ImageCache {
         if let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             let key = data.base64EncodedStringWithOptions([])
             if let image = cache.objectForKey(key) as? UIImage {
-                completion(image: image)
+                completion(url: url, cached: true, image: image)
             }
             else {
                 if var blocks = loadingBlocks[key] {
@@ -44,7 +44,7 @@ public class ImageCache {
                                     if let image = UIImage(data: data), let blocks = self.loadingBlocks[key] {
                                         self.cache.setObject(image, forKey: key)
                                         for block in blocks {
-                                            block(image: image)
+                                            block(url: url, cached: false, image: image)
                                         }
                                         self.loadingBlocks.removeValueForKey(key)
                                     }
