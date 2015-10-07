@@ -8,7 +8,15 @@
 
 import UIKit
 
+
 public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+    
+    public enum Direction {
+        case Left
+        case Right
+    }
+    
+    public var slideDirection: Direction?
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.33
@@ -22,9 +30,17 @@ public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewContro
             transitionContext.containerView()!.addSubview(toController.view)
 
             let fromStartRect = fromController.view.frame
-            let fromEndRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-
-            let toStartRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+            let fromEndRect: CGRect
+            let toStartRect: CGRect
+            let d = slideDirection ?? .Left
+            switch d {
+                case .Left:
+                    fromEndRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                    toStartRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                case .Right:
+                    fromEndRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                    toStartRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+            }
             let toEndRect = fromStartRect
 
             fromController.view.frame = fromStartRect
@@ -38,12 +54,20 @@ public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewContro
         case .Dismissing:
             let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
             let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(toController.view)
+            transitionContext.containerView()!.addSubview(fromController.view)
 
             let fromStartRect = fromController.view.frame
-            let fromEndRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-
-            let toStartRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+            let fromEndRect: CGRect
+            let toStartRect: CGRect
+            let d = slideDirection ?? .Right
+            switch d {
+                case .Left:
+                    fromEndRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                    toStartRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                case .Right:
+                    fromEndRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                    toStartRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+            }
             let toEndRect = fromStartRect
 
             fromController.view.frame = fromStartRect
@@ -55,6 +79,10 @@ public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewContro
                 transitionContext.completeTransition(true)
             })
         }
+    }
+    
+    private func rectsForDirection(direction: Direction) {
+        
     }
 
 }

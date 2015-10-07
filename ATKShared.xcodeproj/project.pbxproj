@@ -234,8 +234,8 @@
 		C24BEF821BB379E0004AAC33 /* Slide */ = {
 			isa = PBXGroup;
 			children = (
-				C24BEF631BB37983004AAC33 /* SlideTransitioningAnimator.swift */,
 				C24BEF641BB37983004AAC33 /* SlideTransitioningDelegate.swift */,
+				C24BEF631BB37983004AAC33 /* SlideTransitioningAnimator.swift */,
 			);
 			name = Slide;
 			sourceTree = "<group>";
