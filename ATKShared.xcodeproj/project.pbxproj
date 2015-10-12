@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C21859BD1BCBF68A00219727 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF331BB378FD004AAC33 /* ImageCache.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF361BB378FD004AAC33 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF341BB378FD004AAC33 /* JSON.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF3F1BB37920004AAC33 /* ATKSharedUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C24BEF3E1BB37920004AAC33 /* ATKSharedUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		C24BEF331BB378FD004AAC33 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C24BEF341BB378FD004AAC33 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C24BEF3C1BB37920004AAC33 /* ATKSharedUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ATKSharedUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 				C26B4F931BB4987C009640D7 /* PushButton.swift */,
 				C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */,
 				C24BEF771BB3798C004AAC33 /* InsetTextField.swift */,
+				C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C26B4F901BB497DE009640D7 /* UIColor+Hex.swift in Sources */,
+				C21859BD1BCBF68A00219727 /* PlaceholderTextView.swift in Sources */,
 				C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */,
 				C28BBF8B1BB3639000A0443C /* PassInError.swift in Sources */,
 				C28BBF8A1BB3639000A0443C /* FilePath.swift in Sources */,
