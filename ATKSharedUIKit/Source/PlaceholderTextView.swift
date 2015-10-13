@@ -16,7 +16,7 @@ public class PlaceholderTextView: UITextView {
     
     override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        if let placeholder = placeholderText {
+        if let placeholder = placeholderText where text.isEmpty {
             (placeholder as NSString).drawAtPoint(CGPoint(x: textContainerInset.left + textContainer.lineFragmentPadding, y: textContainerInset.top), withAttributes: [
                 NSFontAttributeName: self.font ?? UIFont.systemFontOfSize(UIFont.systemFontSize()),
                 NSForegroundColorAttributeName: UIColor(white: 0.8, alpha: 1)
