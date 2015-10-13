@@ -14,6 +14,15 @@ public class PlaceholderTextView: UITextView {
     @IBInspectable
     public var placeholderText: String?
     
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textDidChangeNotification:", name: UITextViewTextDidChangeNotification, object: self)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
         if let placeholder = placeholderText where text.isEmpty {
@@ -22,6 +31,10 @@ public class PlaceholderTextView: UITextView {
                 NSForegroundColorAttributeName: UIColor(white: 0.8, alpha: 1)
                 ])
         }
+    }
+    
+    func textDidChangeNotification(note: NSNotification) {
+        setNeedsDisplay()
     }
 
 }
