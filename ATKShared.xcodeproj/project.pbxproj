@@ -42,6 +42,7 @@
 		C28BBF8B1BB3639000A0443C /* PassInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF871BB3639000A0443C /* PassInError.swift */; settings = {ASSET_TAGS = (); }; };
 		C28BBF8C1BB3639000A0443C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF881BB3639000A0443C /* Promise.swift */; settings = {ASSET_TAGS = (); }; };
 		C28BBF8D1BB3639000A0443C /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF891BB3639000A0443C /* Q.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DC014C1BD02DF900F887C8 /* UIScrollView+Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC014B1BD02DF900F887C8 /* UIScrollView+Edges.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		C28BBF871BB3639000A0443C /* PassInError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassInError.swift; sourceTree = "<group>"; };
 		C28BBF881BB3639000A0443C /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		C28BBF891BB3639000A0443C /* Q.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Q.swift; sourceTree = "<group>"; };
+		C2DC014B1BD02DF900F887C8 /* UIScrollView+Edges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Edges.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,9 +186,10 @@
 		C24BEF7C1BB379AB004AAC33 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */,
 				C24BEF541BB37972004AAC33 /* UIScrollView+Bounds.swift */,
+				C2DC014B1BD02DF900F887C8 /* UIScrollView+Edges.swift */,
 				C24BEF551BB37972004AAC33 /* UIView+Frame.swift */,
+				C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */,
 				C24BEF561BB37972004AAC33 /* UIViewController+TopPresented.swift */,
 				C24BEF671BB37983004AAC33 /* UIViewController+Transitioning.swift */,
 			);
@@ -518,6 +521,7 @@
 				C24BEF731BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift in Sources */,
 				C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */,
 				C24BEF721BB37983004AAC33 /* SlideTransitioningDelegate.swift in Sources */,
+				C2DC014C1BD02DF900F887C8 /* UIScrollView+Edges.swift in Sources */,
 				C24BEF681BB37983004AAC33 /* BaseTransitioningAnimator.swift in Sources */,
 				C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */,
 				C24BEF591BB37972004AAC33 /* UIViewController+TopPresented.swift in Sources */,

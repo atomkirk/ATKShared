@@ -39,8 +39,10 @@ public class ImageCache {
                     loadingBlocks[key] = [completion]
                     let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
                         Q.main {
-                            if let HTTPResponse = response as? NSHTTPURLResponse, let data = data {
-                                if HTTPResponse.statusCode == 200 {
+                            if let
+                                HTTPResponse = response as? NSHTTPURLResponse,
+                                data = data
+                                where HTTPResponse.statusCode == 200 {
                                     if let image = UIImage(data: data), let blocks = self.loadingBlocks[key] {
                                         self.cache.setObject(image, forKey: key)
                                         for block in blocks {
@@ -48,7 +50,9 @@ public class ImageCache {
                                         }
                                         self.loadingBlocks.removeValueForKey(key)
                                     }
-                                }
+                            }
+                            else {
+                                print("\(error)")
                             }
                         }
                     })
