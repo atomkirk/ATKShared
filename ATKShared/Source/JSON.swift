@@ -52,7 +52,7 @@ public enum JSON: CustomStringConvertible {
 
     public var string: String? {
         switch self {
-        case .JSONString(let value):
+        case .JSONString(let value) where !value.isEmpty:
             return value
         case .JSONNumber(let value):
             return "\(value)"
