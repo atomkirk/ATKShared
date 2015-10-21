@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C21859BD1BCBF68A00219727 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
+		C24493C01BD7D97D005E134F /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24493BF1BD7D97D005E134F /* PaddedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF331BB378FD004AAC33 /* ImageCache.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF361BB378FD004AAC33 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF341BB378FD004AAC33 /* JSON.swift */; settings = {ASSET_TAGS = (); }; };
 		C24BEF3F1BB37920004AAC33 /* ATKSharedUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C24BEF3E1BB37920004AAC33 /* ATKSharedUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		C24493BF1BD7D97D005E134F /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		C24BEF331BB378FD004AAC33 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C24BEF341BB378FD004AAC33 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		C24BEF3C1BB37920004AAC33 /* ATKSharedUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ATKSharedUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +181,7 @@
 				C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */,
 				C24BEF771BB3798C004AAC33 /* InsetTextField.swift */,
 				C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */,
+				C24493BF1BD7D97D005E134F /* PaddedLabel.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */,
 				C24BEF721BB37983004AAC33 /* SlideTransitioningDelegate.swift in Sources */,
 				C2DC014C1BD02DF900F887C8 /* UIScrollView+Edges.swift in Sources */,
+				C24493C01BD7D97D005E134F /* PaddedLabel.swift in Sources */,
 				C24BEF681BB37983004AAC33 /* BaseTransitioningAnimator.swift in Sources */,
 				C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */,
 				C24BEF591BB37972004AAC33 /* UIViewController+TopPresented.swift in Sources */,
