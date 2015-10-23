@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias ImageCacheCompletionBlock = (url: NSURL, cached: Bool, image: UIImage?) -> Void
+public typealias ImageCacheCompletionBlock = (url: NSURL, cached: Bool, image: UIImage) -> Void
 
 public class ImageCache {
 
