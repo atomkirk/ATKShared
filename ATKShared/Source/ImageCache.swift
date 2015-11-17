@@ -31,9 +31,7 @@ public class ImageCache {
             }
             else {
                 if var blocks = loadingBlocks[key] {
-                    Q.main {
-                        blocks.append(completion)
-                    }
+                    blocks.append(completion)
                 }
                 else {
                     loadingBlocks[key] = [completion]
@@ -50,6 +48,9 @@ public class ImageCache {
                                         }
                                         self.loadingBlocks.removeValueForKey(key)
                                     }
+                                    else {
+                                        print("failed to convert data to image.")
+                                    }
                             }
                             else {
                                 print("\(error)")
@@ -59,6 +60,9 @@ public class ImageCache {
                     task.resume()
                 }
             }
+        }
+        else {
+            print("failed to convert url to data")
         }
     }
 
