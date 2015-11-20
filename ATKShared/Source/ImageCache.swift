@@ -22,6 +22,14 @@ public class ImageCache {
         Don't initialize your own. Use `shared`
     */
     private init() { }
+    
+    public func hasImage(url: NSURL) -> Bool {
+        if let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let key = data.base64EncodedStringWithOptions([])
+            return cache.objectForKey(key) != nil
+        }
+        return false
+    }
 
     public func loadImageAtURL(url: NSURL, completion: ImageCacheCompletionBlock) {
         if let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
