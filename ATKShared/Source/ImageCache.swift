@@ -65,6 +65,9 @@ public class ImageCache {
                                     print("failed to convert data to image.")
                                 }
                         }
+                        else {
+                            print("error: \(error)")
+                        }
                     }
                 })
                 task.resume()
