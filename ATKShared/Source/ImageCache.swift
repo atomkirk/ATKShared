@@ -22,44 +22,66 @@ public class ImageCache {
         Don't initialize your own. Use `shared`
     */
     private init() { }
+    
+    public func hasImage(url: NSURL) -> Bool {
+        let key = keyForURL(url)
+        return cache.objectForKey(key) != nil
+    }
+    
+    public func cacheImage(image: UIImage, url: NSURL) {
+        let key = keyForURL(url)
+        self.cache.setObject(image, forKey: key)
+    }
+    
+    public func preloadImageAtURL(url: NSURL) {
+        loadImageAtURL(url) { url, cached, image in }
+    }
+    
+    public func clear() {
+        cache.removeAllObjects()
+    }
 
     public func loadImageAtURL(url: NSURL, completion: ImageCacheCompletionBlock) {
-        if let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-            let key = data.base64EncodedStringWithOptions([])
-            if let image = cache.objectForKey(key) as? UIImage {
-                completion(url: url, cached: true, image: image)
+        let key = keyForURL(url)
+        if let image = cache.objectForKey(key) as? UIImage {
+            completion(url: url, cached: true, image: image)
+        }
+        else {
+            if var blocks = loadingBlocks[key] {
+                blocks.append(completion)
             }
             else {
-                if var blocks = loadingBlocks[key] {
+                loadingBlocks[key] = [completion]
+                let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
                     Q.main {
-                        blocks.append(completion)
-                    }
-                }
-                else {
-                    loadingBlocks[key] = [completion]
-                    let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
-                        Q.main {
-                            if let
-                                HTTPResponse = response as? NSHTTPURLResponse,
-                                data = data
-                                where HTTPResponse.statusCode == 200 {
-                                    if let image = UIImage(data: data), let blocks = self.loadingBlocks[key] {
-                                        self.cache.setObject(image, forKey: key)
-                                        for block in blocks {
-                                            block(url: url, cached: false, image: image)
-                                        }
-                                        self.loadingBlocks.removeValueForKey(key)
+                        if let
+                            HTTPResponse = response as? NSHTTPURLResponse,
+                            data = data
+                            where HTTPResponse.statusCode == 200 {
+                                if let image = UIImage(data: data), let blocks = self.loadingBlocks[key] {
+                                    self.cache.setObject(image, forKey: key)
+                                    for block in blocks {
+                                        block(url: url, cached: false, image: image)
                                     }
-                            }
-                            else {
-                                print("\(error)")
-                            }
+                                    self.loadingBlocks.removeValueForKey(key)
+                                }
+                                else {
+                                    print("failed to convert data to image.")
+                                }
                         }
-                    })
-                    task.resume()
-                }
+                        else {
+                            print("error: \(error)")
+                        }
+                    }
+                })
+                task.resume()
             }
         }
     }
 
+    private func keyForURL(url: NSURL) -> String {
+        let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        return data.base64EncodedStringWithOptions([])
+    }
+    
 }
