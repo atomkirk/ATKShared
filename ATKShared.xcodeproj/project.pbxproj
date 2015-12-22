@@ -7,43 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C21859BD1BCBF68A00219727 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */; settings = {ASSET_TAGS = (); }; };
-		C24493C01BD7D97D005E134F /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24493BF1BD7D97D005E134F /* PaddedLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF331BB378FD004AAC33 /* ImageCache.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF361BB378FD004AAC33 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF341BB378FD004AAC33 /* JSON.swift */; settings = {ASSET_TAGS = (); }; };
+		C21859BD1BCBF68A00219727 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21859BC1BCBF68A00219727 /* PlaceholderTextView.swift */; };
+		C24493C01BD7D97D005E134F /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24493BF1BD7D97D005E134F /* PaddedLabel.swift */; };
+		C24BEF351BB378FD004AAC33 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF331BB378FD004AAC33 /* ImageCache.swift */; };
+		C24BEF361BB378FD004AAC33 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF341BB378FD004AAC33 /* JSON.swift */; };
 		C24BEF3F1BB37920004AAC33 /* ATKSharedUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C24BEF3E1BB37920004AAC33 /* ATKSharedUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C24BEF461BB37920004AAC33 /* ATKSharedUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24BEF3C1BB37920004AAC33 /* ATKSharedUIKit.framework */; settings = {ASSET_TAGS = (); }; };
+		C24BEF461BB37920004AAC33 /* ATKSharedUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24BEF3C1BB37920004AAC33 /* ATKSharedUIKit.framework */; };
 		C24BEF4B1BB37920004AAC33 /* ATKSharedUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF4A1BB37920004AAC33 /* ATKSharedUIKitTests.swift */; };
-		C24BEF571BB37972004AAC33 /* UIScrollView+Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF541BB37972004AAC33 /* UIScrollView+Bounds.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF581BB37972004AAC33 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF551BB37972004AAC33 /* UIView+Frame.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF591BB37972004AAC33 /* UIViewController+TopPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF561BB37972004AAC33 /* UIViewController+TopPresented.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF681BB37983004AAC33 /* BaseTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5A1BB37983004AAC33 /* BaseTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF691BB37983004AAC33 /* ClampTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5B1BB37983004AAC33 /* ClampTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF6A1BB37983004AAC33 /* ClampTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5C1BB37983004AAC33 /* ClampTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF6B1BB37983004AAC33 /* FadeTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5D1BB37983004AAC33 /* FadeTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF6C1BB37983004AAC33 /* FadeTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5E1BB37983004AAC33 /* FadeTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF6F1BB37983004AAC33 /* PopTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF611BB37983004AAC33 /* PopTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF701BB37983004AAC33 /* PopTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF621BB37983004AAC33 /* PopTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF711BB37983004AAC33 /* SlideTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF631BB37983004AAC33 /* SlideTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF721BB37983004AAC33 /* SlideTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF641BB37983004AAC33 /* SlideTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF731BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF651BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF741BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF661BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF751BB37983004AAC33 /* UIViewController+Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF671BB37983004AAC33 /* UIViewController+Transitioning.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF781BB3798C004AAC33 /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */; settings = {ASSET_TAGS = (); }; };
-		C24BEF791BB3798C004AAC33 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF771BB3798C004AAC33 /* InsetTextField.swift */; settings = {ASSET_TAGS = (); }; };
-		C26B4F901BB497DE009640D7 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F8F1BB497DE009640D7 /* UIColor+Hex.swift */; settings = {ASSET_TAGS = (); }; };
-		C26B4F921BB49848009640D7 /* UIView+RoundedEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */; settings = {ASSET_TAGS = (); }; };
-		C26B4F941BB4987C009640D7 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F931BB4987C009640D7 /* PushButton.swift */; settings = {ASSET_TAGS = (); }; };
-		C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F951BB498CF009640D7 /* SlideOverTransitioningDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F961BB498CF009640D7 /* SlideOverTransitioningAnimator.swift */; settings = {ASSET_TAGS = (); }; };
+		C24BEF571BB37972004AAC33 /* UIScrollView+Bounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF541BB37972004AAC33 /* UIScrollView+Bounds.swift */; };
+		C24BEF581BB37972004AAC33 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF551BB37972004AAC33 /* UIView+Frame.swift */; };
+		C24BEF591BB37972004AAC33 /* UIViewController+TopPresented.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF561BB37972004AAC33 /* UIViewController+TopPresented.swift */; };
+		C24BEF681BB37983004AAC33 /* BaseTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5A1BB37983004AAC33 /* BaseTransitioningAnimator.swift */; };
+		C24BEF691BB37983004AAC33 /* ClampTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5B1BB37983004AAC33 /* ClampTransitioningAnimator.swift */; };
+		C24BEF6A1BB37983004AAC33 /* ClampTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5C1BB37983004AAC33 /* ClampTransitioningDelegate.swift */; };
+		C24BEF6B1BB37983004AAC33 /* FadeTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5D1BB37983004AAC33 /* FadeTransitioningAnimator.swift */; };
+		C24BEF6C1BB37983004AAC33 /* FadeTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF5E1BB37983004AAC33 /* FadeTransitioningDelegate.swift */; };
+		C24BEF6F1BB37983004AAC33 /* PopTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF611BB37983004AAC33 /* PopTransitioningAnimator.swift */; };
+		C24BEF701BB37983004AAC33 /* PopTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF621BB37983004AAC33 /* PopTransitioningDelegate.swift */; };
+		C24BEF711BB37983004AAC33 /* SlideTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF631BB37983004AAC33 /* SlideTransitioningAnimator.swift */; };
+		C24BEF721BB37983004AAC33 /* SlideTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF641BB37983004AAC33 /* SlideTransitioningDelegate.swift */; };
+		C24BEF731BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF651BB37983004AAC33 /* TabBarSlideTransitioningAnimator.swift */; };
+		C24BEF741BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF661BB37983004AAC33 /* TabBarSlideTransitioningDelegate.swift */; };
+		C24BEF751BB37983004AAC33 /* UIViewController+Transitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF671BB37983004AAC33 /* UIViewController+Transitioning.swift */; };
+		C24BEF781BB3798C004AAC33 /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF761BB3798C004AAC33 /* LoadingCircleView.swift */; };
+		C24BEF791BB3798C004AAC33 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24BEF771BB3798C004AAC33 /* InsetTextField.swift */; };
+		C26B4F901BB497DE009640D7 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F8F1BB497DE009640D7 /* UIColor+Hex.swift */; };
+		C26B4F921BB49848009640D7 /* UIView+RoundedEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F911BB49848009640D7 /* UIView+RoundedEdges.swift */; };
+		C26B4F941BB4987C009640D7 /* PushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F931BB4987C009640D7 /* PushButton.swift */; };
+		C26B4F971BB498CF009640D7 /* SlideOverTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F951BB498CF009640D7 /* SlideOverTransitioningDelegate.swift */; };
+		C26B4F981BB498CF009640D7 /* SlideOverTransitioningAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B4F961BB498CF009640D7 /* SlideOverTransitioningAnimator.swift */; };
 		C28BBF6E1BB3630B00A0443C /* ATKShared.h in Headers */ = {isa = PBXBuildFile; fileRef = C28BBF6D1BB3630B00A0443C /* ATKShared.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C28BBF751BB3630B00A0443C /* ATKShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28BBF6A1BB3630B00A0443C /* ATKShared.framework */; settings = {ASSET_TAGS = (); }; };
+		C28BBF751BB3630B00A0443C /* ATKShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C28BBF6A1BB3630B00A0443C /* ATKShared.framework */; };
 		C28BBF7A1BB3630B00A0443C /* ATKSharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF791BB3630B00A0443C /* ATKSharedTests.swift */; };
-		C28BBF8A1BB3639000A0443C /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF861BB3639000A0443C /* FilePath.swift */; settings = {ASSET_TAGS = (); }; };
-		C28BBF8B1BB3639000A0443C /* PassInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF871BB3639000A0443C /* PassInError.swift */; settings = {ASSET_TAGS = (); }; };
-		C28BBF8C1BB3639000A0443C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF881BB3639000A0443C /* Promise.swift */; settings = {ASSET_TAGS = (); }; };
-		C28BBF8D1BB3639000A0443C /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF891BB3639000A0443C /* Q.swift */; settings = {ASSET_TAGS = (); }; };
-		C2DC014C1BD02DF900F887C8 /* UIScrollView+Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC014B1BD02DF900F887C8 /* UIScrollView+Edges.swift */; settings = {ASSET_TAGS = (); }; };
+		C28BBF8A1BB3639000A0443C /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF861BB3639000A0443C /* FilePath.swift */; };
+		C28BBF8B1BB3639000A0443C /* PassInError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF871BB3639000A0443C /* PassInError.swift */; };
+		C28BBF8C1BB3639000A0443C /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF881BB3639000A0443C /* Promise.swift */; };
+		C28BBF8D1BB3639000A0443C /* Q.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28BBF891BB3639000A0443C /* Q.swift */; };
+		C2DC014C1BD02DF900F887C8 /* UIScrollView+Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC014B1BD02DF900F887C8 /* UIScrollView+Edges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -602,6 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.atomkirk.ATKSharedUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvos appletvsimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -621,6 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.atomkirk.ATKSharedUIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvos appletvsimulator";
 			};
 			name = Release;
 		};
@@ -741,14 +743,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ATKShared/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atomkirk.ATKShared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -760,13 +768,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ATKShared/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @loader_path/../Frameworks @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atomkirk.ATKShared;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
