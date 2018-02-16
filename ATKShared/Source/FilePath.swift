@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class FilePath: NSObject {
+open class FilePath: NSObject {
 
-    public let string: String
+    open let string: String
 
-    public var fileURL: NSURL {
-        return NSURL(fileURLWithPath: self.string)
+    open var fileURL: URL {
+        return URL(fileURLWithPath: self.string)
     }
 
     public init(string: String) {
@@ -23,9 +23,9 @@ public class FilePath: NSObject {
 
     // MARK: - Directories
 
-    public class func documentRoot() -> FilePath {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask) 
-        let path = urls.last!.relativePath!
+    open class func documentRoot() -> FilePath {
+        let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask) 
+        let path = urls.last!.relativePath
         return FilePath(string: path)
     }
 
@@ -33,43 +33,43 @@ public class FilePath: NSObject {
 
     // MARK: - Utils
 
-    public func exists() -> Bool {
-        return NSFileManager.defaultManager().fileExistsAtPath(self.string)
+    open func exists() -> Bool {
+        return FileManager.default.fileExists(atPath: self.string)
     }
 
-    public func contents() -> NSData? {
-        return NSFileManager.defaultManager().contentsAtPath(self.string)
+    open func contents() -> Data? {
+        return FileManager.default.contents(atPath: self.string)
     }
 
-    public func directoryContents(ext: String?) -> [FilePath] {
-        let items = (try! NSFileManager.defaultManager().contentsOfDirectoryAtPath(self.string)) 
+    open func directoryContents(_ ext: String?) -> [FilePath] {
+        let items = (try! FileManager.default.contentsOfDirectory(atPath: self.string)) 
         var paths = [FilePath]()
         for filename in items {
             if ext == nil || (filename as NSString).pathExtension == ext {
-                let filePath = FilePath(string: (self.string as NSString).stringByAppendingPathComponent(filename))
+                let filePath = FilePath(string: (self.string as NSString).appendingPathComponent(filename))
                 paths.append(filePath)
             }
         }
         return paths
     }
 
-    public func basename() -> String {
-        return ((self.string as NSString).lastPathComponent as NSString).stringByDeletingPathExtension
+    open func basename() -> String {
+        return ((self.string as NSString).lastPathComponent as NSString).deletingPathExtension
     }
 
-    public func pathByAppendingComponent(component: String) -> FilePath {
-        return FilePath(string: (self.string as NSString).stringByAppendingPathComponent(component))
+    open func pathByAppendingComponent(_ component: String) -> FilePath {
+        return FilePath(string: (self.string as NSString).appendingPathComponent(component))
     }
 
-    public func write(content: NSData) -> Bool {
-        return content.writeToFile(self.string, atomically: true)
+    open func write(_ content: Data) -> Bool {
+        return ((try? content.write(to: URL(fileURLWithPath: self.string), options: [.atomic])) != nil)
     }
 
-    public func remove() -> Bool {
+    open func remove() -> Bool {
         if self.exists() {
             let success: Bool
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(self.string)
+                try FileManager.default.removeItem(atPath: self.string)
                 success = true
             } catch let error as NSError {
                 PassInError().ref = error

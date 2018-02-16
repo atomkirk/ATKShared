@@ -21,10 +21,10 @@ public extension UIViewController {
         }
     }
 
-    public func customTransitionToController(controller: UIViewController, transitioningDelegate: UIViewControllerTransitioningDelegate) {
+    public func customTransitionToController(_ controller: UIViewController, transitioningDelegate: UIViewControllerTransitioningDelegate) {
         self.retainedTransitioningDelegate = transitioningDelegate
         controller.transitioningDelegate = transitioningDelegate
-        controller.modalPresentationStyle = .Custom
+        controller.modalPresentationStyle = .custom
     }
 
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class PopTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+open class PopTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PopTransitioningAnimator(direction: .Presenting)
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopTransitioningAnimator(direction: .presenting)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PopTransitioningAnimator(direction: .Dismissing)
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopTransitioningAnimator(direction: .dismissing)
     }
 }

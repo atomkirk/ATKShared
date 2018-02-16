@@ -8,34 +8,34 @@
 
 import UIKit
 
-public class PushButton: UIButton {
+open class PushButton: UIButton {
     
-    public override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         pushIn()
     }
     
-    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         popOut()
     }
     
-    public override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
-        super.touchesCancelled(touches, withEvent: event)
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
         popOut()
     }
     
-    private func pushIn() {
-        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-            self.transform = CGAffineTransformMakeScale(0.9, 0.9)
+    fileprivate func pushIn() {
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState, animations: { () -> Void in
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         }) { (finished) -> Void in
             
         }
     }
     
-    private func popOut() {
-        UIView.animateWithDuration(0.1, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
-            self.transform = CGAffineTransformIdentity
+    fileprivate func popOut() {
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.beginFromCurrentState, animations: { () -> Void in
+            self.transform = CGAffineTransform.identity
         }) { (finished) -> Void in
                 
         }

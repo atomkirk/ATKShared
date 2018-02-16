@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class TabBarSlideTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+open class TabBarSlideTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TabBarSlideTransitioningAnimator(direction: .Presenting)
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TabBarSlideTransitioningAnimator(direction: .presenting)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TabBarSlideTransitioningAnimator(direction: .Dismissing)
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TabBarSlideTransitioningAnimator(direction: .dismissing)
     }
     
 }

@@ -10,26 +10,26 @@ import UIKit
 
 public extension UIScrollView {
     
-    public func isWithinPoints(points: CGFloat, toEdge edge: UIRectEdge) -> Bool {
+    public func isWithinPoints(_ points: CGFloat, toEdge edge: UIRectEdge) -> Bool {
         let offsetLength: CGFloat
         let viewLength: CGFloat
         let contentLength: CGFloat
         let distanceFromEdge: CGFloat
         
         switch edge {
-            case UIRectEdge.Top:
+            case UIRectEdge.top:
                 distanceFromEdge = fabs(contentOffsetY)
                 offsetLength = 0
                 viewLength = 0
                 contentLength = 0
             
-            case UIRectEdge.Right:
+            case UIRectEdge.right:
                 offsetLength = fabs(contentOffsetX)
                 viewLength = fabs(bounds.size.width)
                 contentLength = fabs(contentSize.width)
                 distanceFromEdge = contentLength - (offsetLength + viewLength)
             
-            case UIRectEdge.Bottom:
+            case UIRectEdge.bottom:
                 offsetLength = fabs(contentOffsetY)
                 viewLength = fabs(bounds.size.height)
                 contentLength = fabs(contentSize.height)

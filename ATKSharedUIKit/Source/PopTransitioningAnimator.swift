@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+open class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        if self.direction == .Presenting {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        if self.direction == .presenting {
             return 1
         }
         else {
@@ -19,35 +19,35 @@ public class PopTransitioningAnimator: BaseTransitioningAnimator, UIViewControll
         }
     }
 
-    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
-        case .Presenting:
-            let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(toController.view)
+        case .presenting:
+            let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(toController.view)
 
             toController.view.alpha = 0
-            toController.view.transform = CGAffineTransformMakeScale(0.5, 0.5)
-            fromController.view.transform = CGAffineTransformIdentity
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: { () -> Void in
+            toController.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            fromController.view.transform = CGAffineTransform.identity
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: { () -> Void in
                 toController.view.alpha = 1
-                toController.view.transform = CGAffineTransformIdentity
-                fromController.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                toController.view.transform = CGAffineTransform.identity
+                fromController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 }, completion: { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
             })
-        case .Dismissing:
-            let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(fromController.view)
+        case .dismissing:
+            let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(fromController.view)
 
             fromController.view.alpha = 1
-            fromController.view.transform = CGAffineTransformIdentity
-            toController.view.transform = CGAffineTransformMakeScale(0.9, 0.9)
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+            fromController.view.transform = CGAffineTransform.identity
+            toController.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
                 fromController.view.alpha = 0
-                fromController.view.transform = CGAffineTransformMakeScale(0.8, 0.8)
-                toController.view.transform = CGAffineTransformIdentity
+                fromController.view.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                toController.view.transform = CGAffineTransform.identity
                 }, completion: { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
             })

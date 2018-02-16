@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class FadeTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+open class FadeTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return FadeTransitioningAnimator(direction: .Presenting)
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransitioningAnimator(direction: .presenting)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return FadeTransitioningAnimator(direction: .Dismissing)
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransitioningAnimator(direction: .dismissing)
     }
 }

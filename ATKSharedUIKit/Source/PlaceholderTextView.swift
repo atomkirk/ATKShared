@@ -9,31 +9,31 @@
 import UIKit
 
 @IBDesignable
-public class PlaceholderTextView: UITextView {
+open class PlaceholderTextView: UITextView {
     
     @IBInspectable
-    public var placeholderText: String?
+    open var placeholderText: String?
     
-    public override func didMoveToWindow() {
+    open override func didMoveToWindow() {
         super.didMoveToWindow()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textDidChangeNotification:", name: UITextViewTextDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(PlaceholderTextView.textDidChangeNotification(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: self)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    override public func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        if let placeholder = placeholderText where text.isEmpty {
-            (placeholder as NSString).drawAtPoint(CGPoint(x: textContainerInset.left + textContainer.lineFragmentPadding, y: textContainerInset.top), withAttributes: [
-                NSFontAttributeName: self.font ?? UIFont.systemFontOfSize(12),
-                NSForegroundColorAttributeName: UIColor(white: 0.8, alpha: 1)
+    override open func draw(_ rect: CGRect) {
+        super.draw(rect)
+        if let placeholder = placeholderText , text.isEmpty {
+            (placeholder as NSString).draw(at: CGPoint(x: textContainerInset.left + textContainer.lineFragmentPadding, y: textContainerInset.top), withAttributes: [
+                NSAttributedStringKey.font: self.font ?? UIFont.systemFont(ofSize: 12),
+                NSAttributedStringKey.foregroundColor: UIColor(white: 0.8, alpha: 1)
                 ])
         }
     }
     
-    func textDidChangeNotification(note: NSNotification) {
+    @objc func textDidChangeNotification(_ note: Notification) {
         setNeedsDisplay()
     }
 

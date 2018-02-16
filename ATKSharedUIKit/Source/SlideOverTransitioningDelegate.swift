@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class SlideOverTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+open class SlideOverTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOverTransitioningAnimator(direction: .Presenting)
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOverTransitioningAnimator(direction: .presenting)
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOverTransitioningAnimator(direction: .Dismissing)
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOverTransitioningAnimator(direction: .dismissing)
     }
     
 }

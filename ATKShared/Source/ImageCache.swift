@@ -8,69 +8,69 @@
 
 import UIKit
 
-public typealias ImageCacheCompletionBlock = (url: NSURL, cached: Bool, image: UIImage) -> Void
+public typealias ImageCacheCompletionBlock = (_ url: URL, _ cached: Bool, _ image: UIImage) -> Void
 
-public class ImageCache {
+open class ImageCache {
 
-    public static let shared = ImageCache()
+    open static let shared = ImageCache()
 
-    private var loadingBlocks = [String: [ImageCacheCompletionBlock]]()
+    fileprivate var loadingBlocks = [String: [ImageCacheCompletionBlock]]()
 
-    private let cache = NSCache()
+    fileprivate let cache = NSCache<NSString, UIImage>()
 
     /**
         Don't initialize your own. Use `shared`
     */
-    private init() { }
+    fileprivate init() { }
     
-    public func hasImage(url: NSURL) -> Bool {
+    open func hasImage(_ url: URL) -> Bool {
         let key = keyForURL(url)
-        return cache.objectForKey(key) != nil
+        return cache.object(forKey: key) != nil
     }
     
-    public func cacheImage(image: UIImage, url: NSURL) {
+    open func cacheImage(_ image: UIImage, url: URL) {
         let key = keyForURL(url)
         self.cache.setObject(image, forKey: key)
     }
     
-    public func preloadImageAtURL(url: NSURL) {
+    open func preloadImageAtURL(_ url: URL) {
         loadImageAtURL(url) { url, cached, image in }
     }
     
-    public func clear() {
+    open func clear() {
         cache.removeAllObjects()
     }
 
-    public func loadImageAtURL(url: NSURL, completion: ImageCacheCompletionBlock) {
+    open func loadImageAtURL(_ url: URL, completion: @escaping ImageCacheCompletionBlock) {
         let key = keyForURL(url)
-        if let image = cache.objectForKey(key) as? UIImage {
-            completion(url: url, cached: true, image: image)
+        if let image = cache.object(forKey: key) {
+            completion(url, true, image)
         }
         else {
-            if var blocks = loadingBlocks[key] {
+            if var blocks = loadingBlocks[key as String] {
                 blocks.append(completion)
             }
             else {
-                loadingBlocks[key] = [completion]
-                let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) in
+                loadingBlocks[key as String] = [completion]
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                     Q.main {
                         if let
-                            HTTPResponse = response as? NSHTTPURLResponse,
-                            data = data
-                            where HTTPResponse.statusCode == 200 {
-                                if let image = UIImage(data: data), let blocks = self.loadingBlocks[key] {
+                            HTTPResponse = response as? HTTPURLResponse,
+                            let data = data
+                            , HTTPResponse.statusCode == 200 {
+                            if let image = UIImage(data: data), let blocks = self.loadingBlocks[key as String] {
                                     self.cache.setObject(image, forKey: key)
                                     for block in blocks {
-                                        block(url: url, cached: false, image: image)
+                                        block(url, false, image)
                                     }
-                                    self.loadingBlocks.removeValueForKey(key)
+                                self.loadingBlocks.removeValue(forKey: key as String)
                                 }
                                 else {
                                     print("failed to convert data to image.")
                                 }
                         }
                         else {
-                            print("error: \(error)")
+                            print("error: \(String(describing: error) )")
                         }
                     }
                 })
@@ -79,9 +79,9 @@ public class ImageCache {
         }
     }
 
-    private func keyForURL(url: NSURL) -> String {
-        let data = url.absoluteString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-        return data.base64EncodedStringWithOptions([])
+    fileprivate func keyForURL(_ url: URL) -> NSString {
+        let data = url.absoluteString.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        return data.base64EncodedString(options: []) as NSString
     }
     
 }

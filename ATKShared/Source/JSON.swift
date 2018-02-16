@@ -9,32 +9,32 @@
 import Foundation
 
 public enum JSON: CustomStringConvertible {
-    case JSONArray([JSON])
-    case JSONObject([String: JSON])
-    case JSONString(String)
-    case JSONNumber(Double)
-    case JSONBool(Bool)
-    case JSONNull
+    case jsonArray([JSON])
+    case jsonObject([String: JSON])
+    case jsonString(String)
+    case jsonNumber(Double)
+    case jsonBool(Bool)
+    case jsonNull
 
     public subscript(index: Int) -> JSON {
         if let array = self.array {
             if index < 0 || index >= array.count {
-                return .JSONNull
+                return .jsonNull
             } else {
                 return array[index]
             }
         } else {
-            return .JSONNull
+            return .jsonNull
         }
     }
 
     public subscript(key: String) -> JSON {
-        return object?[key] ?? .JSONNull
+        return object?[key] ?? .jsonNull
     }
 
     public var array: [JSON]? {
         switch self {
-        case .JSONArray(let value):
+        case .jsonArray(let value):
             return value
         default:
             return nil
@@ -43,7 +43,7 @@ public enum JSON: CustomStringConvertible {
 
     public var object: [String: JSON]? {
         switch self {
-        case .JSONObject(let value):
+        case .jsonObject(let value):
             return value
         default:
             return nil
@@ -52,23 +52,23 @@ public enum JSON: CustomStringConvertible {
 
     public var string: String? {
         switch self {
-        case .JSONString(let value) where !value.isEmpty:
+        case .jsonString(let value) where !value.isEmpty:
             return value
-        case .JSONNumber(let value):
+        case .jsonNumber(let value):
             return "\(value)"
         default:
             return nil
         }
     }
 
-    public var url: NSURL? {
+    public var url: URL? {
         switch self {
-        case .JSONString(let value):
-            if let url = NSURL(string: value) {
+        case .jsonString(let value):
+            if let url = URL(string: value) {
                 return url
             }
-            else if let escaped = (value as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-                return NSURL(string: escaped)
+            else if let escaped = (value as NSString).addingPercentEscapes(using: String.Encoding.utf8.rawValue) {
+                return URL(string: escaped)
             }
         default:
             return nil
@@ -76,12 +76,12 @@ public enum JSON: CustomStringConvertible {
         return nil
     }
 
-    public var date: NSDate? {
+    public var date: Date? {
         switch self {
-        case .JSONString:
+        case .jsonString:
             return nil
-        case .JSONNumber(let value):
-            return NSDate(timeIntervalSince1970: value)
+        case .jsonNumber(let value):
+            return Date(timeIntervalSince1970: value)
         default:
             return nil
         }
@@ -89,9 +89,9 @@ public enum JSON: CustomStringConvertible {
 
     public var number: Double? {
         switch self {
-        case .JSONNumber(let value):
+        case .jsonNumber(let value):
             return value
-        case .JSONBool(let value):
+        case .jsonBool(let value):
             return value ? 1 : 0
         default:
             return nil
@@ -100,9 +100,9 @@ public enum JSON: CustomStringConvertible {
 
     public var integer: Int? {
         switch self {
-        case .JSONNumber(let value):
+        case .jsonNumber(let value):
             return Int(value)
-        case .JSONBool(let value):
+        case .jsonBool(let value):
             return value ? 1 : 0
         default:
             return nil
@@ -111,9 +111,9 @@ public enum JSON: CustomStringConvertible {
 
     public var bool: Bool? {
         switch self {
-        case .JSONBool(let value):
+        case .jsonBool(let value):
             return value
-        case .JSONNumber(let value):
+        case .jsonNumber(let value):
             return value != 0
         default:
             return nil
@@ -122,7 +122,7 @@ public enum JSON: CustomStringConvertible {
 
     public var null: Bool {
         switch self {
-        case .JSONNull:
+        case .jsonNull:
             return true
         default:
             return false
@@ -131,29 +131,29 @@ public enum JSON: CustomStringConvertible {
 
     public var JSONString: String {
         switch self {
-        case .JSONArray(let value):
+        case .jsonArray(let value):
             let components = value.map {$0.JSONString}
-            let merged = components.joinWithSeparator(",")
+            let merged = components.joined(separator: ",")
             return "[\(merged)]"
-        case .JSONObject(let value):
+        case .jsonObject(let value):
             let keys = Array(value.keys)
             let components = keys.map {"\(self.serializeString($0)):\(value[$0]!.JSONString)"}
-            let merged = components.joinWithSeparator(",")
+            let merged = components.joined(separator: ",")
             return "{\(merged)}"
-        case .JSONString(let value):
+        case .jsonString(let value):
             return serializeString(value)
-        case .JSONNumber(let value):
+        case .jsonNumber(let value):
             return "\(value)"
-        case .JSONBool(let value):
+        case .jsonBool(let value):
             return "\(value)"
-        case .JSONNull:
+        case .jsonNull:
             return "null"
         }
     }
 
-    public var JSONData: NSData {
+    public var JSONData: Data {
         let string = self.JSONString as NSString
-        let data: NSData? = string.dataUsingEncoding(NSUTF8StringEncoding)
+        let data: Data? = string.data(using: String.Encoding.utf8.rawValue)
         return data!
     }
 
@@ -161,29 +161,29 @@ public enum JSON: CustomStringConvertible {
         return self.JSONString
     }
 
-    static func fromObject(object: AnyObject) -> JSON {
+    static func fromObject(_ object: AnyObject) -> JSON {
         if let object = object as? NSDictionary {
             var output: [String: JSON] = [:]
             for (key, value) in object {
-                output[key as! String] = fromObject(value)
+                output[key as! String] = fromObject(value as AnyObject)
             }
-            return .JSONObject(output)
+            return .jsonObject(output)
         } else if let object = object as? NSArray {
-            return .JSONArray((object as [AnyObject]).map(fromObject))
+            return .jsonArray((object as [AnyObject]).map(fromObject))
         } else if let object = object as? NSString {
-            return .JSONString(object as String)
+            return .jsonString(object as String)
         } else if let object = object as? NSNumber {
-            return .JSONNumber(object.doubleValue)
+            return .jsonNumber(object.doubleValue)
         }
 
-        return .JSONNull
+        return .jsonNull
     }
 
-    public static func fromData(data: NSData) -> (json: JSON?, error: NSError?) {
+    public static func fromData(_ data: Data) -> (json: JSON?, error: NSError?) {
         var error: NSError? = nil
         let result: AnyObject?
         do {
-            result = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            result = try JSONSerialization.jsonObject(with: data, options: []) as AnyObject
         } catch let error1 as NSError {
             error = error1
             result = nil
@@ -196,82 +196,82 @@ public enum JSON: CustomStringConvertible {
         }
     }
 
-    public static func fromString(string: String)  -> (json: JSON?, error: NSError?) {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    public static func fromString(_ string: String)  -> (json: JSON?, error: NSError?) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)!
         return fromData(data)
     }
 
     public init() {
-        self = .JSONNull
+        self = .jsonNull
     }
 
     public init(_ array: [JSON]?) {
         if let array = array {
-            self = .JSONArray(array)
+            self = .jsonArray(array)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
     public init(_ object: [String: JSON]?) {
         if let object = object {
-            self = .JSONObject(object)
+            self = .jsonObject(object)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
     public init(_ string: String?) {
         if let string = string {
-            self = .JSONString(string)
+            self = .jsonString(string)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
-    public init(_ url: NSURL?) {
+    public init(_ url: URL?) {
         if let absoluteString = url?.absoluteString {
-            self = .JSONString(absoluteString)
+            self = .jsonString(absoluteString)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
-    public init(_ date: NSDate?) {
+    public init(_ date: Date?) {
 //        if let date = date {
 //            self = .JSONString(date.iso8601Representation)
 //        } else {
-            self = .JSONNull
+            self = .jsonNull
 //        }
     }
 
     public init(_ number: Double?) {
         if let number = number {
-            self = .JSONNumber(number)
+            self = .jsonNumber(number)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
     public init(_ integer: Int?) {
         if let integer = integer {
-            self = .JSONNumber(Double(integer))
+            self = .jsonNumber(Double(integer))
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
     public init(_ bool: Bool?) {
         if let bool = bool {
-            self = .JSONBool(bool)
+            self = .jsonBool(bool)
         } else {
-            self = .JSONNull
+            self = .jsonNull
         }
     }
 
     // MARK: -
     // MARK: Private API
-    private func serializeString(string: String) -> String {
+    fileprivate func serializeString(_ string: String) -> String {
         var output: String = "\""
 
         for character in string.characters {
@@ -302,57 +302,57 @@ public enum JSON: CustomStringConvertible {
     }
 }
 
-extension JSON: ArrayLiteralConvertible {
+extension JSON: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: JSON...) {
-        self = .JSONArray(elements)
+        self = .jsonArray(elements)
     }
 }
 
-extension JSON: DictionaryLiteralConvertible {
+extension JSON: ExpressibleByDictionaryLiteral {
     public init(dictionaryLiteral elements: (String, JSON)...) {
         var dictionary: [String: JSON] = [:]
         for (key, value) in elements {
             dictionary[key] = value
         }
 
-        self = .JSONObject(dictionary)
+        self = .jsonObject(dictionary)
     }
 }
 
-extension JSON: StringLiteralConvertible {
+extension JSON: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
-        self = .JSONString(value)
+        self = .jsonString(value)
     }
 
     public init(extendedGraphemeClusterLiteral value: String) {
-        self = .JSONString(value)
+        self = .jsonString(value)
     }
 
     public init(unicodeScalarLiteral value: String) {
-        self = .JSONString(value)
+        self = .jsonString(value)
     }
 }
 
-extension JSON: IntegerLiteralConvertible {
+extension JSON: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int) {
-        self = .JSONNumber(Double(value))
+        self = .jsonNumber(Double(value))
     }
 }
 
-extension JSON: FloatLiteralConvertible {
+extension JSON: ExpressibleByFloatLiteral {
     public init(floatLiteral value: Double) {
-        self = .JSONNumber(value)
+        self = .jsonNumber(value)
     }
 }
 
-extension JSON: BooleanLiteralConvertible {
+extension JSON: ExpressibleByBooleanLiteral {
     public init(booleanLiteral value: Bool) {
-        self = .JSONBool(value)
+        self = .jsonBool(value)
     }
 }
 
-extension JSON: NilLiteralConvertible {
+extension JSON: ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
-        self = .JSONNull
+        self = .jsonNull
     }
 }

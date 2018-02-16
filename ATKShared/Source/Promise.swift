@@ -8,40 +8,40 @@
 
 import Foundation
 
-public class Promise<T> {
+open class Promise<T> {
 
-    public typealias PromiseSuccessBlock = (result: T) -> Void
-    public typealias PromiseFailureBlock = (error: NSError?) -> Void
+    public typealias PromiseSuccessBlock = (_ result: T) -> Void
+    public typealias PromiseFailureBlock = (_ error: NSError?) -> Void
     public typealias PromiseAlwaysBlock  = () -> Void
 
-    private(set) var successBlocks = [PromiseSuccessBlock]()
-    private(set) var failureBlocks = [PromiseFailureBlock]()
-    private(set) var alwaysBlocks  = [PromiseAlwaysBlock]()
+    fileprivate(set) var successBlocks = [PromiseSuccessBlock]()
+    fileprivate(set) var failureBlocks = [PromiseFailureBlock]()
+    fileprivate(set) var alwaysBlocks  = [PromiseAlwaysBlock]()
     
     public init() {}
 
-    public func success(block: PromiseSuccessBlock) -> Self {
+    open func success(_ block: @escaping PromiseSuccessBlock) -> Self {
         successBlocks.append(block)
         return self
     }
 
-    public func failure(block: PromiseFailureBlock) -> Self {
+    open func failure(_ block: @escaping PromiseFailureBlock) -> Self {
         failureBlocks.append(block)
         return self
     }
 
-    public func always(block: PromiseAlwaysBlock) -> Self {
+    open func always(_ block: @escaping PromiseAlwaysBlock) -> Self {
         alwaysBlocks.append(block)
         return self
     }
 
-    public func resolve(result: T) {
-        successBlocks.forEach { $0(result: result) }
+    open func resolve(_ result: T) {
+        successBlocks.forEach { $0(result) }
         alwaysBlocks.forEach { $0() }
     }
 
-    public func reject(error: NSError?) {
-        failureBlocks.forEach { $0(error: error) }
+    open func reject(_ error: NSError?) {
+        failureBlocks.forEach { $0(error) }
         alwaysBlocks.forEach { $0() }
     }
 

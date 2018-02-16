@@ -10,59 +10,59 @@ import Foundation
 
 public typealias QBlock = () -> Void
 
-private func serialQueueWithName(name: String) -> NSOperationQueue {
-    let queue = NSOperationQueue()
+private func serialQueueWithName(_ name: String) -> OperationQueue {
+    let queue = OperationQueue()
     queue.name = "com.spoken.upload-queue"
     queue.maxConcurrentOperationCount = 1
     return queue
 }
 
-public class Q: NSObject {
+open class Q: NSObject {
 
-    private static let filesQueue = serialQueueWithName("com.spoken.files-queue")
+    fileprivate static let filesQueue = serialQueueWithName("com.spoken.files-queue")
 
-    private static let uploaderQueue = serialQueueWithName("com.spoken.uploader-queue")
+    fileprivate static let uploaderQueue = serialQueueWithName("com.spoken.uploader-queue")
 
-    private static let photosQueue = serialQueueWithName("com.spoken.photos-queue")
+    fileprivate static let photosQueue = serialQueueWithName("com.spoken.photos-queue")
 
-    public class func main(block: QBlock) {
-        NSOperationQueue.mainQueue().addOperationWithBlock(block)
+    open class func main(_ block: @escaping QBlock) {
+        OperationQueue.main.addOperation(block)
     }
 
-    public class func files(block: QBlock) {
-        filesQueue.addOperationWithBlock(block)
+    open class func files(_ block: @escaping QBlock) {
+        filesQueue.addOperation(block)
     }
 
-    public class func uploader(block: QBlock) {
-        uploaderQueue.addOperationWithBlock(block)
+    open class func uploader(_ block: @escaping QBlock) {
+        uploaderQueue.addOperation(block)
     }
 
-    public class func photos(block: QBlock) {
-        photosQueue.addOperationWithBlock(block)
+    open class func photos(_ block: @escaping QBlock) {
+        photosQueue.addOperation(block)
     }
 
 
     // MARK: - standard queues
 
-    public class func def(block: QBlock) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+    open class func def(_ block: @escaping QBlock) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: block);
     }
 
-    public class func background(block: QBlock) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
+    open class func background(_ block: @escaping QBlock) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: block);
     }
 
-    public class func high(block: QBlock) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), block);
+    open class func high(_ block: @escaping QBlock) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.high).async(execute: block);
     }
 
-    public class func low(block: QBlock) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), block);
+    open class func low(_ block: @escaping QBlock) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.low).async(execute: block);
     }
 
-    public class func delay(seconds: NSTimeInterval, block: QBlock) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue(), block)
+    open class func delay(_ seconds: TimeInterval, block: @escaping QBlock) {
+        let delayTime = DispatchTime.now() + Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: block)
     }
 
 }

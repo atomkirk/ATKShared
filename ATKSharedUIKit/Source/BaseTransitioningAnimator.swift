@@ -10,15 +10,15 @@ import Foundation
 
 
 public enum BaseTransitioningAnimatorDirection {
-    case Presenting
-    case Dismissing
+    case presenting
+    case dismissing
 }
 
-public class BaseTransitioningAnimator: NSObject {
+open class BaseTransitioningAnimator: NSObject {
 
-    public var direction: BaseTransitioningAnimatorDirection
+    open var direction: BaseTransitioningAnimatorDirection
 
-    public required init(direction: BaseTransitioningAnimatorDirection = .Presenting) {
+    public required init(direction: BaseTransitioningAnimatorDirection = .presenting) {
         self.direction = direction
     }
 

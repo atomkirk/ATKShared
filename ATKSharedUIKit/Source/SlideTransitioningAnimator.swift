@@ -9,70 +9,70 @@
 import UIKit
 
 
-public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+open class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
     
     public enum Direction {
-        case Left
-        case Right
+        case left
+        case right
     }
     
-    public var slideDirection: Direction?
+    open var slideDirection: Direction?
 
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.33
     }
 
-    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
-        case .Presenting:
-            let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(toController.view)
+        case .presenting:
+            let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(toController.view)
 
             let fromStartRect = fromController.view.frame
             let fromEndRect: CGRect
             let toStartRect: CGRect
-            let d = slideDirection ?? .Left
+            let d = slideDirection ?? .left
             switch d {
-                case .Left:
-                    fromEndRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                    toStartRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                case .Right:
-                    fromEndRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                    toStartRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                case .left:
+                    fromEndRect = CGRect(x: fromStartRect.origin.x - fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                    toStartRect = CGRect(x: fromStartRect.origin.x + fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                case .right:
+                    fromEndRect = CGRect(x: fromStartRect.origin.x + fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                    toStartRect = CGRect(x: fromStartRect.origin.x - fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
             }
             let toEndRect = fromStartRect
 
             fromController.view.frame = fromStartRect
             toController.view.frame = toStartRect
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
                 fromController.view.frame = fromEndRect
                 toController.view.frame = toEndRect
             }, completion: { (finished: Bool) -> Void in
                 transitionContext.completeTransition(true)
             })
-        case .Dismissing:
-            let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(fromController.view)
+        case .dismissing:
+            let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(fromController.view)
 
             let fromStartRect = fromController.view.frame
             let fromEndRect: CGRect
             let toStartRect: CGRect
-            let d = slideDirection ?? .Right
+            let d = slideDirection ?? .right
             switch d {
-                case .Left:
-                    fromEndRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                    toStartRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                case .Right:
-                    fromEndRect = CGRectMake(fromStartRect.origin.x + fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
-                    toStartRect = CGRectMake(fromStartRect.origin.x - fromStartRect.size.width, fromStartRect.origin.y, fromStartRect.size.width, fromStartRect.size.height)
+                case .left:
+                    fromEndRect = CGRect(x: fromStartRect.origin.x - fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                    toStartRect = CGRect(x: fromStartRect.origin.x + fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                case .right:
+                    fromEndRect = CGRect(x: fromStartRect.origin.x + fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
+                    toStartRect = CGRect(x: fromStartRect.origin.x - fromStartRect.size.width, y: fromStartRect.origin.y, width: fromStartRect.size.width, height: fromStartRect.size.height)
             }
             let toEndRect = fromStartRect
 
             fromController.view.frame = fromStartRect
             toController.view.frame = toStartRect
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
                 fromController.view.frame = fromEndRect
                 toController.view.frame = toEndRect
             }, completion: { (finished: Bool) -> Void in
@@ -81,7 +81,7 @@ public class SlideTransitioningAnimator: BaseTransitioningAnimator, UIViewContro
         }
     }
     
-    private func rectsForDirection(direction: Direction) {
+    fileprivate func rectsForDirection(_ direction: Direction) {
         
     }
 

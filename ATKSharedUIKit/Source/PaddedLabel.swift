@@ -9,23 +9,23 @@
 import UIKit
 
 @IBDesignable
-public class PaddedLabel: UILabel {
+open class PaddedLabel: UILabel {
     
-    @IBInspectable public var topEdgeInset: CGFloat = 0
+    @IBInspectable open var topEdgeInset: CGFloat = 0
     
-    @IBInspectable public var leftEdgeInset: CGFloat = 0
+    @IBInspectable open var leftEdgeInset: CGFloat = 0
     
-    @IBInspectable public var bottomEdgeInset: CGFloat = 0
+    @IBInspectable open var bottomEdgeInset: CGFloat = 0
     
-    @IBInspectable public var rightEdgeInset: CGFloat = 0
+    @IBInspectable open var rightEdgeInset: CGFloat = 0
     
-    public override func drawTextInRect(rect: CGRect) {
+    open override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topEdgeInset, left: leftEdgeInset, bottom: bottomEdgeInset, right: rightEdgeInset)
-        return super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+        return super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
     
-    public override func intrinsicContentSize() -> CGSize {
-        var size = super.intrinsicContentSize()
+    open override var intrinsicContentSize : CGSize {
+        var size = super.intrinsicContentSize
         size.width += leftEdgeInset + rightEdgeInset
         size.height += topEdgeInset + bottomEdgeInset
         return size

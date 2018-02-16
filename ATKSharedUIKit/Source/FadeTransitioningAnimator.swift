@@ -8,31 +8,31 @@
 
 import UIKit
 
-public class FadeTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
+open class FadeTransitioningAnimator: BaseTransitioningAnimator, UIViewControllerAnimatedTransitioning {
 
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.33
     }
 
-    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         switch self.direction {
-        case .Presenting:
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(toController.view)
+        case .presenting:
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(toController.view)
 
             toController.view.alpha = 0
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
                 toController.view.alpha = 1
                 }, completion: { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
             })
-        case .Dismissing:
-            let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            transitionContext.containerView()!.addSubview(toController.view)
+        case .dismissing:
+            let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+            let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+            transitionContext.containerView.addSubview(toController.view)
 
             fromController.view.alpha = 1
-            UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+            UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
                 fromController.view.alpha = 0
                 }, completion: { (finished: Bool) -> Void in
                     transitionContext.completeTransition(true)
