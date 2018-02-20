@@ -45,19 +45,19 @@ open class Q: NSObject {
     // MARK: - standard queues
 
     open class func def(_ block: @escaping QBlock) {
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: block);
+        DispatchQueue.global(qos: .default).async(execute: block);
     }
 
     open class func background(_ block: @escaping QBlock) {
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: block);
+        DispatchQueue.global(qos: .background).async(execute: block);
     }
 
     open class func high(_ block: @escaping QBlock) {
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.high).async(execute: block);
+        DispatchQueue.global(qos: .userInteractive).async(execute: block);
     }
 
     open class func low(_ block: @escaping QBlock) {
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.low).async(execute: block);
+        DispatchQueue.global(qos: .unspecified).async(execute: block);
     }
 
     open class func delay(_ seconds: TimeInterval, block: @escaping QBlock) {

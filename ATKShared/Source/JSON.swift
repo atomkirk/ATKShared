@@ -274,7 +274,7 @@ public enum JSON: CustomStringConvertible {
     fileprivate func serializeString(_ string: String) -> String {
         var output: String = "\""
 
-        for character in string.characters {
+        for character in string {
             switch String(character) {
             case "\"":
                 output += "\\\""
